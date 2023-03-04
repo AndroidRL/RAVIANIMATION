@@ -8,12 +8,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import com.appwood.mylibrarys.AnimationR;
+import com.appwood.mylibrarys.NextAnimationClass;
 
 import animation.almonten.koola.R;
 
@@ -44,12 +42,11 @@ public class ExitScreen extends Activity {
     }
 
     private void yes() {
-        finish();
         finishAffinity();
     }
 
     private void no() {
-        AnimationR.BackAnimation(ExitScreen.this);
+        NextAnimationClass.BackAnimation(ExitScreen.this);
     }
 
     @Override

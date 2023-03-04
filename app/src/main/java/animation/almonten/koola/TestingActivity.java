@@ -6,8 +6,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.appwood.mylibrarys.AnimationR;
-
+import com.appwood.mylibrarys.BigAnimationClass;
+import com.appwood.mylibrarys.NextAnimationClass;
+import com.appwood.mylibrarys.SmallAnimationClass;
 
 public class TestingActivity extends AppCompatActivity {
 
@@ -19,23 +20,25 @@ public class TestingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AnimationR.BackAnimation(TestingActivity.this);
+        NextAnimationClass.BackAnimation(this);
     }
 
-    public void ADS(View view) {
-        AnimationR.Slider_intents(this, new Intent(this, MainActivity.class), null, 0);
+    public void ADSs(View view) {
+        NextAnimationClass.NextAnimation(this, new Intent(this, MainActivity.class), 0);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        AnimationR.Top_animation(this, findViewById(R.id.native_detail),
-                findViewById(R.id.banner_native), findViewById(R.id.addcontain)
-                , findViewById(R.id.ad_native_fb));
+        BigAnimationClass.BigAnimation(this, findViewById(R.id.native_detail), findViewById(R.id.banner_native), findViewById(R.id.addcontain), findViewById(R.id.ad_native_fb), findViewById(R.id.native_ad_layout), findViewById(R.id.custom_native), findViewById(R.id.applovin_native));
 
         //banner
-        AnimationR.Bottom_animation(this, findViewById(R.id.bottomsads).findViewById(com.appwood.mylibrarys.R.id.google_banner_container), findViewById(R.id.bottomsads).findViewById(com.appwood.mylibrarys.R.id.fb_banner_container), findViewById(R.id.bottomsads));
+        SmallAnimationClass.SmallAnimation(this, findViewById(R.id.bottomsads), findViewById(R.id.google_banner), findViewById(R.id.fb_banner), findViewById(R.id.applovin_banner));
     }
 
 
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//    }
 }

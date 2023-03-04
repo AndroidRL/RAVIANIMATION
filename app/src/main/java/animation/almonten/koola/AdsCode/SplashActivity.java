@@ -1,6 +1,5 @@
 package animation.almonten.koola.AdsCode;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,7 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.appwood.mylibrarys.Splash;
+import com.appwood.mylibrarys.SplashClass;
 
 import animation.almonten.koola.MainActivity;
 import animation.almonten.koola.R;
@@ -26,12 +25,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        FirebaseGetId();
+            FirebaseGetId();
     }
 
     private void FirebaseGetId() {
         if (isOnline()) {
-            Splash.next_activity_animation("Testing", "1", this, new Intent(this, MainActivity.class));
+            SplashClass.splash_intent(new Intent(this, MainActivity.class),"Test", "1", this);
             return;
         }
         Dialog dialog = new Dialog(SplashActivity.this);
@@ -48,6 +47,7 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         dialog.findViewById(R.id.retry_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,11 +57,10 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         dialog.show();
-
     }
+
     public boolean isOnline() {
         NetworkInfo activeNetworkInfo = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
-
 }
